@@ -55,7 +55,7 @@ for i in range(len(df)):
 ax.set_xticks(df.index)
 ax.set_xticklabels([])
 
-# === Draw province labels where xticks normally go ===
+# === Draw province labels ===
 for center, province in province_centers:
     ax.text(center, -0.05, province, ha='center', va='center', fontsize=11, fontweight='bold', transform=ax.get_xaxis_transform())
 
