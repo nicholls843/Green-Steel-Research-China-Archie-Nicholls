@@ -19,7 +19,7 @@ for col in ["City", "Province", "Ycase", "Scase"]:
 # Filter to selected year; keep all scenarios (S1, S2, S3)
 df_year = df[df["Ycase"] == selected_ycase].copy()
 
-# === Group definitions (Cplit CAPEX/OPEX) ===
+# === Group definitions (split CAPEX/OPEX) ===
 group_map = {
     # CAPEX
     'Renewables': ['aCAPEX_s', 'aCAPEX_w'],
@@ -38,7 +38,7 @@ capex_groups = ['Renewables', 'Hydrogen Production', 'Steelmaking', 'Caster']
 opex_groups  = ['Transport', 'Iron Feed', 'Scrap', 'Alloy & Additives', 'Labour & Maint.']
 final_groups = capex_groups + opex_groups  
 
-# Sum source columns into grouped categories (skip missing safely)
+# Sum source columns into grouped categories 
 tmp = df_year.copy()
 for group, cols in group_map.items():
     exist = [c for c in cols if c in tmp.columns]
@@ -53,7 +53,7 @@ agg = tmp.groupby(["City_Prov", "Scase"], as_index=False)[final_groups].mean()
 # Pivot to MultiIndex columns: (Component, Scenario)
 pivot = agg.pivot(index="City_Prov", columns="Scase", values=final_groups)
 
-# Ensure all three scenarios exist (fill missing with zeros)
+# Ensure all three scenarios exist 
 for s in ["S1", "S2", "S3"]:
     if s not in pivot.columns.levels[1]:
         for g in final_groups:
@@ -67,7 +67,7 @@ totals_across_scen = pivot.groupby(level=1, axis=1).sum()
 avg_total = totals_across_scen.mean(axis=1)
 pivot = pivot.loc[avg_total.sort_values().index]
 
-# Optional: normalize each city-scenario bar to 100% (composition view)
+# normalize each city-scenario bar to 100% (composition view)
 if normalize_to_pct:
     totals = totals_across_scen.copy()
     for s in ["S1", "S2", "S3"]:
