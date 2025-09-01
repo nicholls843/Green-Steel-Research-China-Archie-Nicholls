@@ -16,7 +16,7 @@ YEAR = 'YCurrent'
 SCENARIO = 'S1'
 LCOS_COL = f"{YEAR}_{SCENARIO}"   # e.g., 'YCurrent_S1'
 
-# === Load LCOS data (handle Windows-typical encodings) ===
+# === Load LCOS data ===
 def read_lcos_csv(path):
     for enc in ("utf-8", "utf-8-sig", "cp1252", "latin1", "utf-16", "utf-16le", "utf-16be"):
         try:
