@@ -12,7 +12,7 @@ labels = [scrap_labels[s] for s in colors]
 fig_legend.legend(handles, labels, ncols=3, frameon=False, loc="center")
 fig_legend.tight_layout()
 
-# Save separately (PNG, but you can change to PDF/SVG if needed for publications)
+# Save separately 
 LEGEND_PNG = r"C:\Users\archi\Data Visualisations\Emissions\figures\Legend_ScrapScenarios.png"
 fig_legend.savefig(LEGEND_PNG, dpi=220, bbox_inches="tight")
 print(f"Legend saved separately: {LEGEND_PNG}")
