@@ -6,7 +6,7 @@ import numpy as np
 # ================= USER SETTINGS =================
 CSV_PATH = r"C:\Users\archi\Data Visualisations\Emissions\Emissions.csv"
 
-TOP_N = 10   # Only show top 10 cities
+TOP_N = 10   #  top 10 cities
 
 OUTPUT_PNG = r"C:\Users\archi\Data Visualisations\Emissions\figures\Top10_TotalEmissions_tonnes.png"
 SAVE_DPI = 220
