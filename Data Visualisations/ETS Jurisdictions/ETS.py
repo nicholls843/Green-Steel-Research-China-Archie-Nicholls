@@ -43,7 +43,7 @@ df_plot.columns = ["Jurisdiction", "Price_USD_tCO2e"]
 df_plot["Price_USD_tCO2e"] = pd.to_numeric(df_plot["Price_USD_tCO2e"], errors="coerce")
 df_plot = df_plot.dropna(subset=["Price_USD_tCO2e"])
 
-# Sort (ascending for horizontal bars so highest ends up on top visually after plotting)
+# Sort 
 df_plot = df_plot.sort_values("Price_USD_tCO2e", ascending=True)
 
 # --- Plot ---
